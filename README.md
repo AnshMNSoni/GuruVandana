@@ -1,6 +1,10 @@
 # 🪔 Guru Vandana 🪔
 - A heartfelt web app to honor teachers and mentors on Guru Purnima by generating personalized greeting cards. 🙏
 
+## 👇 Glimpses of the Project 👇
+![Screenshot 2025-07-10 122636](https://github.com/user-attachments/assets/dec7fc1f-d831-4ddd-a140-c59db9416a1c)
+![Screenshot 2025-07-10 122708](https://github.com/user-attachments/assets/efed021b-f983-4a3e-bc9c-7a7bc6c37cf0)
+
 ## About the Project
 Guru Vandana is a simple yet meaningful web application created to celebrate Guru Purnima, a day dedicated to expressing gratitude to our teachers and mentors. This project allows users to enter a guru's name and instantly receive a personalized Guru Purnima greeting card to share their appreciation.
 
