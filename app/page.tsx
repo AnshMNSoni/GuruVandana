@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
@@ -140,11 +140,48 @@ const BlossomFlower = ({ theme, delay = 0 }: { theme: any; delay?: number }) => 
   </div>
 )
 
+// Preloader component
+const Preloader = () => (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-orange-900 via-red-900 to-yellow-900">
+    <div className="relative">
+      {/* Main spinning book icon */}
+      <div className="animate-preloader-spin">
+        <BookOpen className="w-16 h-16 text-orange-200" />
+      </div>
+
+      {/* Pulsing glow effect */}
+      <div className="absolute inset-0 animate-preloader-glow">
+        <div className="w-16 h-16 rounded-full bg-orange-400/30 blur-xl"></div>
+      </div>
+
+      {/* Orbiting dots */}
+      <div className="absolute inset-0 animate-preloader-orbit">
+        <div className="relative w-16 h-16">
+          <div className="absolute top-0 left-1/2 w-2 h-2 bg-yellow-300 rounded-full transform -translate-x-1/2 animate-pulse"></div>
+          <div className="absolute bottom-0 left-1/2 w-2 h-2 bg-orange-300 rounded-full transform -translate-x-1/2 animate-pulse"></div>
+          <div className="absolute left-0 top-1/2 w-2 h-2 bg-red-300 rounded-full transform -translate-y-1/2 animate-pulse"></div>
+          <div className="absolute right-0 top-1/2 w-2 h-2 bg-pink-300 rounded-full transform -translate-y-1/2 animate-pulse"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
 export default function GuruPurnimaWebsite() {
   const [teacherName, setTeacherName] = useState("")
   const [showCard, setShowCard] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
   const [nameError, setNameError] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Handle preloader
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2000) // Show preloader for 2 seconds
+
+    return () => clearTimeout(timer)
+  }, [])
 
   // Generate unique theme based on teacher's name
   const getThemeForTeacher = (name: string) => {
@@ -286,6 +323,11 @@ export default function GuruPurnimaWebsite() {
     setTeacherName("")
   }
 
+  // Show preloader
+  if (isLoading) {
+    return <Preloader />
+  }
+
   if (showCard) {
     const theme = getThemeForTeacher(teacherName)
     const IconComponent = theme.icon
@@ -423,10 +465,12 @@ export default function GuruPurnimaWebsite() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Background Image */}
+      {/* Beautiful Guru Purnima Background */}
       <div className="absolute inset-0 z-0">
-        <Image src="/images/guru-background.jpg" alt="Educational background" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-900/70 via-red-900/60 to-yellow-900/70"></div>
+        {/* Overlay to cover "under construction" text and create beautiful gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-900/80 via-red-900/70 to-yellow-900/80"></div>
+        {/* Additional overlay to completely hide any unwanted text */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-orange-900/90 to-transparent"></div>
       </div>
 
       {/* Subtle flower petals on landing page */}

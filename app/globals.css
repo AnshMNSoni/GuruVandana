@@ -135,7 +135,7 @@
   }
 }
 
-/* New flower animations */
+/* Flower animations */
 @keyframes blossom {
   0% {
     transform: scale(0) rotate(0deg);
@@ -208,6 +208,40 @@
   }
 }
 
+/* New preloader animations */
+@keyframes preloader-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes preloader-glow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.6;
+  }
+}
+
+@keyframes preloader-orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* Animation classes */
 .animate-float {
   animation: float 4s ease-in-out infinite;
@@ -250,7 +284,7 @@
   animation: sway 4s ease-in-out infinite;
 }
 
-/* New flower animation classes */
+/* Flower animation classes */
 .animate-blossom {
   animation: blossom 1.5s ease-out;
 }
@@ -269,6 +303,19 @@
 
 .animate-petal-sway {
   animation: petal-sway 4s ease-in-out infinite;
+}
+
+/* Preloader animation classes */
+.animate-preloader-spin {
+  animation: preloader-spin 2s ease-in-out infinite;
+}
+
+.animate-preloader-glow {
+  animation: preloader-glow 2s ease-in-out infinite;
+}
+
+.animate-preloader-orbit {
+  animation: preloader-orbit 3s linear infinite;
 }
 
 .font-sanskrit {
